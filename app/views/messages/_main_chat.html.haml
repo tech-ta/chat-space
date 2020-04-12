@@ -1,0 +1,46 @@
+.main-chat
+  .main-chat__group-info
+    .group-member-name
+      .group-member-name__top-space
+      .group-member-name__group
+        十刃
+      .group-member-name__bottom-space
+      .group-member-name__member
+        Member: ザエルアポロ ノイトラ 
+    = link_to "#", class: "edit-btn"do
+      Edit
+  .main-chat__message-list
+    .message-box
+      .message-box__contributor-date
+        .contributor
+          ザエルアポロ
+        .date
+          xxxx/xx/xx(Wed) xx:xx:xx
+      .message-box__top-space
+      .message-box__content
+        啜れ
+      .message-box__bottom-space
+
+    .message-box
+      .message-box__contributor-date
+        .contributor
+          ノイトラ 
+        .date
+          xxxx/xx/xx(Wed) xx:xx:xx
+      .message-box__top-space
+      .message-box__content
+        俺が十刃最強なんだよ
+      .message-box__bottom-space
+
+  .main-chat__message-form
+    %form(class="message-form")
+      .message-form__wrapper
+        %input( class="form-area" type="form"placeholder="type a message")
+        %label(class="image-icon" )
+          -# = icon('fa', 'circle', class: 'fa-lg')
+          = icon('fa', 'image', class: 'fa-lg') 
+          %input(type="file")
+        
+        
+      %input(type="submit" value="Send" class="send-btn")
+

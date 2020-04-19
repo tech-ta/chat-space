@@ -7,26 +7,20 @@
         - else
           名前
       .top-tems__icons
-        = link_to "#", class: "btn-deco" do
+        = link_to new_group_path, class: "btn-deco" do
           = icon('far', 'edit', class: 'top-tems__icons--decoration')
           %span<>
         = link_to edit_user_path(current_user), class: "btn-deco" do
           = icon('fas', 'cog', class: 'top-tems__icons--decoration')
           %span<>
   .side-bar__group-list
-    .message-group
-      .message-group__top-space
-      .message-group__group-name
-        星十字騎士団
-      .message-group__center-space
-      .message-group__top-message
-        俺が陛下を斃す
-      .message-group__bottom-
-    .message-group
-      .message-group__top-space
-      .message-group__group-name
-        十刃
-      .message-group__center-space
-      .message-group__top-message
-        俺が十刃最強なんだよ
-      .message-group__bottom-space
+    - current_user.groups.each do |group|
+      .message-group
+        .message-group__top-space
+        .message-group__group-name
+          = group.name
+        .message-group__center-space
+        .message-group__top-message
+          メッセージなし！！！！
+        .message-group__bottom-
+

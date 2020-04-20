@@ -15,12 +15,13 @@
           %span<>
   .side-bar__group-list
     - current_user.groups.each do |group|
-      .message-group
-        .message-group__top-space
-        .message-group__group-name
-          = group.name
-        .message-group__center-space
-        .message-group__top-message
-          メッセージなし！！！！
-        .message-group__bottom-
+      = link_to group_messages_path(group.id) ,class: "side-bar__group-list--link" do
+        .message-group
+          .message-group__top-space
+          .message-group__group-name
+            = group.name
+          .message-group__center-space
+          .message-group__top-message
+            = group.show_last_message
+          .message-group__bottom-
 

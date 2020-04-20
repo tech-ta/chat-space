@@ -5,6 +5,8 @@
   display: flex;
 }
 .side-bar{
+  position: fixed;
+  left: 0;
   width: 300px;
   height: 100vh;
   background-color:#253141;
@@ -44,6 +46,11 @@
     height: calc(100vh - 100px);
     background-color: #2f3e51;
     padding: 0 20px;
+    
+    &--link{
+      color: #ffffff;
+      text-decoration: none;
+    }
     .message-group{
       &__top-space{
         height: 20px;
@@ -65,11 +72,16 @@
 }
 
 .main-chat{
+  
   width:calc(100vw - 300px);
   height: 100vh;
   &__group-info{
+    position: fixed;
+    left: 300px;
+    
     background-color: #ffffff;
     height: 100px;
+    width:calc(100vw - 300px);
     padding:0 40px;
     display: flex;
     justify-content: space-between;
@@ -103,35 +115,44 @@
     }
   }
   &__message-list{
-    height: calc(100vh - 190px);
-    background-color: #fafafa;
-    padding: 35px 40px 0 40px;
-    .message-box{
-      &__contributor-date{
-        display: flex;
-        .contributor{
-          color: #333333;
-          font-size: 16px;
-        }
-        .date{
-          color: #999999;
-          font-size: 12px;
-        }
+    margin-top: 100px;
+    margin-left: 300px;
+    margin-bottom: 90px;
+    width:100%;
+    padding: 30px;
+      .message-box{
+        
+        &__contributor-date{
+          display: flex;
+          .contributor{
+            color: #333333;
+            font-size: 16px;
+          }
+          .date{
+            margin-left: 5px;
+            color: #999999;
+            font-size: 12px;
+          }
 
-      }
-      &__top-space{
-        height: 12px;
-      }
-      &__content{
-        color: #434a54;
-        font-size: 14px;
-      }
-      &__bottom-space{
-        height: 46px;
-      }
+        }
+        &__top-space{
+          height: 12px;
+        }
+        &__content{
+          color: #434a54;
+          font-size: 14px;
+        }
+        &__bottom-space{
+          height: 46px;
+        }
+    
     }
   }
+  
   &__message-form{
+    position: fixed;
+    bottom: 0;
+    left: 300px;
     height: 90px;
     background-color: #d2d2d2;
     padding: 0 40px;
@@ -180,5 +201,4 @@
     
     }
     
-}
-
+  }

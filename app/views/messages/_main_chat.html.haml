@@ -3,44 +3,37 @@
     .group-member-name
       .group-member-name__top-space
       .group-member-name__group
-        十刃
+        = @group.name
       .group-member-name__bottom-space
       .group-member-name__member
-        Member: ザエルアポロ ノイトラ 
-    = link_to "#", class: "edit-btn"do
+        Member: 
+        - @group.users.each do |user|
+          = user.name
+    = link_to edit_group_path(@group), class: "edit-btn"do
       Edit
   .main-chat__message-list
-    .message-box
-      .message-box__contributor-date
-        .contributor
-          ザエルアポロ
-        .date
-          xxxx/xx/xx(Wed) xx:xx:xx
-      .message-box__top-space
-      .message-box__content
-        啜れ
-      .message-box__bottom-space
-
-    .message-box
-      .message-box__contributor-date
-        .contributor
-          ノイトラ 
-        .date
-          xxxx/xx/xx(Wed) xx:xx:xx
-      .message-box__top-space
-      .message-box__content
-        俺が十刃最強なんだよ
-      .message-box__bottom-space
+    
+    - @messages.each do |message|
+      .message-box
+        .message-box__contributor-date
+          .contributor
+            = User.find(message.user_id).name
+          .date
+            = message.created_at
+        .message-box__top-space
+        .message-box__content
+          -if message.text
+            = message.text
+          = image_tag message.image.url if message.image.present?
+        .message-box__bottom-space
 
   .main-chat__message-form
-    %form(class="message-form")
-      .message-form__wrapper
-        %input( class="form-area" type="form"placeholder="type a message")
-        %label(class="image-icon" )
-          -# = icon('fa', 'circle', class: 'fa-lg')
-          = icon('fa', 'image', class: 'fa-lg') 
-          %input(type="file")
-        
-        
-      %input(type="submit" value="Send" class="send-btn")
+    = form_for [@group, @message] do |f|
+      .message-form
+        .message-form__wrapper
+          = f.text_field :text, class: "form-area", placeholder: 'type a message'
+          %label.image-icon
+            = icon('fa', 'image', class: 'fa-lg') 
+            = f.file_field :image
+        = f.submit "Send", class: "send-btn"
 

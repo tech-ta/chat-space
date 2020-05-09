@@ -12,7 +12,6 @@
     = link_to edit_group_path(@group), class: "edit-btn"do
       Edit
   .main-chat__message-list
-    
     - @messages.each do |message|
       .message-box
         .message-box__contributor-date
@@ -36,4 +35,5 @@
             = icon('fa', 'image', class: 'fa-lg') 
             = f.file_field :image
         = f.submit "Send", class: "send-btn"
+        
 

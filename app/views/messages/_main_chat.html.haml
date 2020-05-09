@@ -18,11 +18,12 @@
           .contributor
             = User.find(message.user_id).name
           .date
-            = message.created_at
+            = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
         .message-box__top-space
         .message-box__content
           -if message.text
-            = message.text
+            %p.message-box__text
+              = message.text
           = image_tag message.image.url if message.image.present?
         .message-box__bottom-space
 

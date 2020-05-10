@@ -15,3 +15,13 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+public/uploads/*
+/Users/daisuke/Desktop/projects/chat-space/chat-space/.gitignore
+/Users/daisuke/Desktop/projects/chat-space/chat-space/.gitignore
+
+/Users/daisuke/Desktop/projects/chat-space/.gitignore
+  5,47: #   git config --global core.excludesfile '~/.gitignore_global'
+  20,56: /Users/daisuke/Desktop/projects/chat-space/chat-space/.gitignore
+
+/Users/daisuke/Desktop/projects/chat-space/chat-space/.gitignore
+  5,47: #   git config --global core.excludesfile '~/.gitignore_global'

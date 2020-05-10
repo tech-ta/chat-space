@@ -2,12 +2,6 @@ $(function() {
 
   function buildHTML(message){
     if (message.image.url) {
-      console.log("こっちに入ってる");
-      console.log(message);
-      console.log(message.text);
-      console.log(message.created_at);
-      console.log(message.user_name);
-      console.log(message.image);
       var html = `<div class="message-box">
                     <div class="message-box__contributor-date">
                       <div class="contributor">

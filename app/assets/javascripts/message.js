@@ -1,8 +1,7 @@
 $(function() {
-
   function buildHTML(message){
     if (message.image.url) {
-      var html = `<div class="message-box">
+      var html = `<div class="message-box" data-message-id=${message.id}>
                     <div class="message-box__contributor-date">
                       <div class="contributor">
                         ${message.user_name}
@@ -18,8 +17,8 @@ $(function() {
                     </div>
                     <div class="message-box__bottom-space"></div>
                   </div>`
-    } else {console.log("false");
-      var html = `<div class="message-box">
+    } else {
+      var html = `<div class="message-box" data-message-id=${message.id}>
                     <div class="message-box__contributor-date">
                       <div class="contributor">
                         ${message.user_name}
@@ -61,6 +60,31 @@ $(function() {
       alert("メッセージ送信に失敗しました");
       $('.send-btn').prop('disabled', false);
     });
-    
   });
+  function reloadMessages(){
+    var last_message_id = $(".message-box:last").data("message-id");
+    $.ajax({
+      url: 'api/messages',
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    
+    .done(function(messages){
+      if (messages.length !==0) {
+        var insertHTML = "";
+        $.each(messages, function(i,message){
+          insertHTML += buildHTML(message);
+        })
+        $('.main-chat__message-list').append(insertHTML);
+        $('.main-chat__message-list').animate({ scrollTop: $('.main-chat__message-list')[0].scrollHeight});
+      }
+    })
+    .fail(function(){
+      alert('errorr');
+    })
+  };
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });

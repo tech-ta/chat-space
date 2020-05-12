@@ -13,7 +13,7 @@
       Edit
   .main-chat__message-list
     - @messages.each do |message|
-      .message-box
+      .message-box{data: {message: {id: message.id}}}
         .message-box__contributor-date
           .contributor
             = User.find(message.user_id).name

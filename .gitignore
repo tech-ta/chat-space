@@ -25,3 +25,4 @@ public/uploads/*
 
 /Users/daisuke/Desktop/projects/chat-space/chat-space/.gitignore
   5,47: #   git config --global core.excludesfile '~/.gitignore_global'
+config/secrets.yml
